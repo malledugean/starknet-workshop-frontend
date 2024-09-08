@@ -62,7 +62,21 @@ const Page: React.FC = () => {
         address: contractAddress,
         watch: true,
     });
-    // Step 3 --> Read from a contract -- End
+    // Step 3.1 --> Read from a contract Total supply -- End
+    const {
+        data: readData2,
+        refetch: dataRefetch2,
+        isError: readIsError2,
+        isLoading: readIsLoading2,
+        error: readError2,
+    } = useContractRead({
+        functionName: "total_supply",
+        args: [],
+        abi: contractAbiETH,
+        address: contractAddress,
+        watch: true,
+    });
+    // Step 3.1 --> Read from a contract  Total supply -- End
 
     // Step 4 --> Write to a contract -- Start
     const [amount, setAmount] = useState(0);
@@ -256,33 +270,35 @@ const Page: React.FC = () => {
             <div
                 className={`p-4 w-full max-w-md m-4 bg-white border-black border`}
             >
-                <h3 className="text-2xl font-bold mb-2">Read your Contract</h3>
-                <p>Balance: {readData?.toString()}</p>
+                <h3 className="text-2xl font-bold mb-2">Read Total Supply</h3>
+                <p>Total Supply: {readData2?.toString()}</p>
                 <div className="flex justify-center pt-4">
                     <button
-                        onClick={() => dataRefetch()}
+                        onClick={() => dataRefetch2()}
                         className={`border border-black text-black font-regular py-2 px-4 bg-yellow-300 hover:bg-yellow-500`}
                     >
                         Refresh
                     </button>
                 </div>
             </div>
-            {/* <div
+            {
+                <div
                     className={`p-4 w-full max-w-md m-4 bg-white border-black border`}
                 >
                     <h3 className="text-2xl font-bold mb-2">
                         Read your Contract
                     </h3>
-                    <p>Balance: xyz</p>
+                    <p>Balance: {readData?.toString()}</p>
                     <div className="flex justify-center pt-4">
                         <button
-                            onClick={() => console.log("Refresh")}
+                            onClick={() => dataRefetch()}
                             className={`border border-black text-black font-regular py-2 px-4 bg-yellow-300 hover:bg-yellow-500`}
                         >
                             Refresh
                         </button>
                     </div>
-                </div> */}
+                </div>
+            }
             {/* Step 3 --> Read from a contract -- End */}
 
             {/* Step 4 --> Write to a contract -- Start */}
