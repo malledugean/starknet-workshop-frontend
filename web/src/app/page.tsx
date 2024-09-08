@@ -44,8 +44,11 @@ const Page: React.FC = () => {
     // Step 2 --> Read your balance -- End
 
     // Step 3 --> Read from a contract -- Start
+    // const contractAddress =
+    //     "0x0232889b389b9495be13daf615861780c16194a47ceb592b71c62769452e505c"; // Sepolia
     const contractAddress =
-        "0x040e20b8fcd4f2ca7ed5cdd26735ce602191dcea16e638ea7e451009f04998b4";
+        "0x01ffaf17ab9bf435c5973b892916465530c7deb98f7f335819fe9d0a083a9670"; // Mainnet
+
     const {
         data: readData,
         refetch: dataRefetch,
